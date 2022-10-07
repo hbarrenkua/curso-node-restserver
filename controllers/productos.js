@@ -22,7 +22,7 @@ const obtenerProductos = async (req,res) =>{
     res.json({
       total, 
       productos
-      })
+      }) 
 }
 
 
