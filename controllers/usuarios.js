@@ -14,6 +14,8 @@ const usuariosGet = async(req=request, res = response) => {
   //   .limit(Number(limite));
   // const total = await Usuario.countDocuments(query);   
 
+
+
   const [total, usuarios] = await Promise.all([
     Usuario.countDocuments(query)   ,
     Usuario.find(query)
@@ -74,14 +76,16 @@ const usuariosGet = async(req=request, res = response) => {
 
     const {id}= req.params;
 
+    
     // //Fiicamente lo borramos
 
     // const usuario = await Usuario.findByIdAndDelete( id);
     const usuario = await Usuario.findByIdAndUpdate(id,{estado:false});
-
+    const usuarioAtenticado = req.usuario;
     
     res.json({
-        usuario
+        usuario,
+        usuarioAtenticado
     })
   }
   const usuariosPatch =(req, res) => {
